@@ -19,6 +19,8 @@ class SnakeGame{
 
         int playerScore; // Puntaje del jugador
 
+        int difficulty; // Dificultad del juego
+
         int snakeTailX[100], snakeTailY[100]; // Array donde se guardan las coordenadas de la cola de la serpiente
         int snakeTailLen; // Longitud de la cola de la serpiente
 

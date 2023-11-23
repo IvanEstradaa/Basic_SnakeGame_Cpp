@@ -99,9 +99,23 @@ void SnakeGame::UpdateGame(){
 	} 
 
 	// Revisa si la serpiente se sale de los limites del juego
-	if(x >= width || x < 0 || y >= height || y < 0){
+	if((x >= width || x < 0 || y >= height || y < 0) && this->difficulty != 1){
 		isGameOver = true; 
     }
+	else{ // si la dificultad esta en facil (1), el juego no termina al salirse de los limites del mapa
+		if(x >= width){
+			x = 0;
+		}
+		else if(x < 0){
+			x = width - 1;
+		}
+		if(y >= height){
+			y = 0;
+		}
+		else if(y < 0){
+			y = height - 1;
+		}
+	}
 
 	// Revisa si la serpiente se come a si misma
 	for(int i = 0; i < snakeTailLen; i++){ 
@@ -143,19 +157,21 @@ int SnakeGame::SetDifficulty(){
             "\nDificil..(3)\n"
 			"\n::Si no se selecciona una dificultad, la dificultad se establecera como Normal::\n"
             "\n-> "; 
-	cin >> dfc;
-	switch (dfc) { 
-	case '1': 
-		dfc = 75; 
+	cin >> this->difficulty;
+	switch(this->difficulty){ 
+	case 1: 
+		dfc = 150;
 		break; 
-	case '2': 
-		dfc = 50; 
+	case 2: 
+		dfc = 100; 
 		break; 
-	case '3': 
+	case 3: 
 		dfc = 25; 
 		break; 
 	default: 
 		dfc = 50; 
+		this->difficulty = 2;
+		break;
 	} 
 	return dfc; 
 } 
