@@ -1,5 +1,8 @@
 #include "SnakeGame.h"
 
+// To compile program, insert the next command line in terminal: 
+//x86_64-w64-mingw32-g++ -o output.exe *.cpp --static && output.exe
+
 void SnakeGame::GameInit(){ 
 	isGameOver = false; 
 	sDir = STOP; 
